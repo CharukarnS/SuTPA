@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:su_tpa/screens/authen.dart';
-
+import 'package:flutter/services.dart';
 
 main() {
   runApp(MyApp());
@@ -9,6 +9,8 @@ main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
       home: Authen(),
     );
