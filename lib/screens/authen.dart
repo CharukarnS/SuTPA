@@ -24,7 +24,7 @@ class _AuthenState extends State<Authen> {
       'Su TPA',
       style: TextStyle(
         fontSize: 30.0,
-        color: Colors.teal,
+        color: Colors.grey[800],
         fontWeight: FontWeight.bold,
         fontFamily: 'Mitr',
       ),
@@ -47,11 +47,54 @@ class _AuthenState extends State<Authen> {
   Widget passwordText() {
     return Container(
       width: 240.0,
-      child: TextFormField(obscureText: true,
+      child: TextFormField(
+          obscureText: true,
           decoration: InputDecoration(
-        labelText: 'Password :',
-        hintText: 'More 6 Charactor',
-      )),
+            labelText: 'Password :',
+            hintText: 'More 6 Charactor',
+          )),
+    );
+  }
+
+  Widget signInButton() {
+    return RaisedButton(
+      color: Colors.teal[800],
+      child: Text(
+        'Sign In',
+        style: TextStyle(color: Colors.white),
+      ),
+      onPressed: () {},
+    );
+  }
+
+  Widget signUpButton() {
+    return RaisedButton(
+      color: Colors.teal[200],
+      child: Text('Sign Up'),
+      onPressed: () {},
+    );
+  }
+
+  Widget showButton() {
+    return Container(
+      width: 240.0,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: signInButton(),
+          ),
+          mySizeBox(),
+          Expanded(
+            child: signUpButton(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget mySizeBox() {
+    return SizedBox(
+      width: 10.0,
     );
   }
 
@@ -60,6 +103,13 @@ class _AuthenState extends State<Authen> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Container(
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [Colors.white, Colors.teal[800]],
+            radius: 3.0,
+            center: Alignment.topCenter,
+          ),
+        ),
         padding: EdgeInsets.only(top: 60.0),
         alignment: Alignment.topCenter,
         child: Column(
@@ -68,6 +118,7 @@ class _AuthenState extends State<Authen> {
             showText(),
             emailText(),
             passwordText(),
+            showButton(),
           ],
         ),
       ),
