@@ -94,6 +94,18 @@ class _MyServiceState extends State<MyService> {
           ),
           ListTile(
             leading: Icon(
+              Icons.android,
+              size: 36.0,
+            ),
+            title: Text(
+              'QR code',
+              style: TextStyle(fontSize: 18.0),
+            ),onTap: (){
+              print('Click QR code');
+            },
+          ),
+          ListTile(
+            leading: Icon(
               Icons.exit_to_app,
               size: 36.0,
             ),
@@ -114,7 +126,8 @@ class _MyServiceState extends State<MyService> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.teal[700],
+      appBar: AppBar(
+        backgroundColor: Colors.teal[700],
         title: showTitleAppBar(),
       ),
       body: ShowListVideo(),
