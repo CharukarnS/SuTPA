@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:su_tpa/models/su_video_model.dart';
 
+import 'play_video.dart';
+
 class ShowListVideo extends StatefulWidget {
   @override
   _ShowListVideoState createState() => _ShowListVideoState();
@@ -92,18 +94,28 @@ class _ShowListVideoState extends State<ShowListVideo> {
       child: ListView.builder(
         itemCount: suVideoModels.length,
         itemBuilder: (context, int index) {
-          return Container(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    showImage(index),
-                    showText(index),
-                  ],
-                ),
-                myDivider(),
-              ],
+          return GestureDetector(
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      showImage(index),
+                      showText(index),
+                    ],
+                  ),
+                  myDivider(),
+                ],
+              ),
             ),
+            onTap: () {
+
+              print('index = $index'); 
+
+              var playRoute = MaterialPageRoute(
+                  builder: (BuildContext context) => PlayVideo(suVideoModel: suVideoModels[index],));
+                  Navigator.of(context).push(playRoute);
+            },
           );
         },
       ),
